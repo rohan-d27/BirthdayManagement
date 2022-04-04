@@ -134,7 +134,7 @@
                                   {
                                   %>
                                    <li>
-                                     <a href="#"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
+                                     <a href="/ServiceProviderDashboard"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
                                     <ul>
                                     <li><a href="/logout">Logout</a></li>
                                    

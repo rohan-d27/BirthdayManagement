@@ -37,6 +37,12 @@ public class PackagesController {
 		mv.setViewName("packages");
 		return mv;
 	}
+	@RequestMapping("/AddNewPackage")
+	public ModelAndView addPackages() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("PackageDetailsInsert");
+		return mv;
+	}
 
 	/*
 	 * @RequestMapping("/packages") public ModelAndView
@@ -46,7 +52,7 @@ public class PackagesController {
 	 * mv.setViewName("TESTPAckage"); return mv; }
 	 */
 
-	@PostMapping(path = "/packagesinsert", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+	@PostMapping(path = "/packageinsert", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String insertPackage(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam String packageDesc,
 			@RequestParam String packageName, @RequestParam double packagePrice) throws Exception {
 		PackagesInfoTable pk = new PackagesInfoTable();

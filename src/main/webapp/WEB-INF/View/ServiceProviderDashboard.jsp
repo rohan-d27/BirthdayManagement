@@ -1,4 +1,7 @@
 
+<%@page import="project.entities.CustomerInfoTable"%>
+
+<%@page import="project.entities.AdminInfoTable"%>
 <%@page import="project.entities.ServiceProviderInfoTable"%>
 <%@page import="java.util.List"%>
 <%@page import="project.entities.ServicesInfoTable"%>
@@ -136,9 +139,9 @@
                                 
                                  <li><a href="#">Login</a>
                                     <ul>
-                                    <li><a href="/userLogin">User</a></li>
-                                    <li><a href="/adminLogin">Admin</a></li>
-                                    <li><a href="/serviceLogin">Service Provider</a></li>
+                                    <li><a href="/CustomerLogin">Customer</a></li>
+                                    <li><a href="/AdminLogin">Admin</a></li>
+                                    <li><a href="/ServiceProviderLogin">Service Provider</a></li>
                                   </ul>
                                 </li>
                                 <%
@@ -149,9 +152,9 @@
                                   {
                                   %>
                                    <li>
-                                     <a href="/SeviceDashboardServiceDetails"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
+                                     <a href="/ServiceProviderDashboard"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
                                     <ul>
-                                      <li><a href="/ordercustomerorderlist">OrdersInfo</a></li>
+                                      <li><a href="/ordersporderlist">OrdersInfo</a></li>
                                     <li><a href="/logout">Logout</a></li>
                                    
                                   </ul>
@@ -223,8 +226,8 @@
                                                <div class="row">
                                                    <div class="col-sm-8"><h2><b>Service Details</b></h2></div>
                                                    <div class="col-sm-4">
-                                                   <form action="/addNewPackage">
-                                                       <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                                                   <form action="/addService">
+                                                       <button type="submit" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                                                       </form>
                                                    </div>
                                                </div>

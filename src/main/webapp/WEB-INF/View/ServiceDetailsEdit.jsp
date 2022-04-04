@@ -150,9 +150,9 @@ label {
                                 
                                  <li><a href="#">Login</a>
                                     <ul>
-                                    <li><a href="/userLogin">User</a></li>
-                                    <li><a href="/adminLogin">Admin</a></li>
-                                    <li><a href="/serviceLogin">Service Provider</a></li>
+                                    <li><a href="/CustomerLogin">Customer</a></li>
+                                    <li><a href="/AdminLogin">Admin</a></li>
+                                    <li><a href="/ServiceProviderLogin">Service Provider</a></li>
                                   </ul>
                                 </li>
                                 <%}

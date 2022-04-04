@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import project.EmailSender.EmailSender;
+import project.dao.CustomOrderDAO;
 import project.dao.CustomerDAO;
 import project.dao.OrdersDAO;
 import project.dao.PackagesDAO;
@@ -28,6 +29,7 @@ import project.entities.CustomerInfoTable;
 import project.entities.OrdersInfoTable;
 import project.entities.PackagesInfoTable;
 import project.entities.ServiceProviderInfoTable;
+import project.entities.ServicesInfoTable;
 
 @Controller
 @SessionAttributes("order")
@@ -39,6 +41,8 @@ public class OrdersController {
 	PackagesDAO daoPackages;
 	@Autowired
 	CustomerDAO daoCustomer;
+	@Autowired
+	CustomOrderDAO daoCustomOrder;
 
 	@RequestMapping("/orderlist")
 	public ModelAndView getListOfOrders() {
@@ -60,6 +64,43 @@ public class OrdersController {
 		}
 	}
 
+	
+
+	@PostMapping(path = "/confirmcustomorder", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+	public String confirmCustomOrder(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam String eventDate,
+			@RequestParam String eventTime, @RequestParam String eventVenue, @RequestParam int numberOfGuests,
+		HttpSession session, HttpServletRequest request,@RequestParam List<ServicesInfoTable> list) throws Exception {
+		CustomerInfoTable cs = (CustomerInfoTable) session.getAttribute("Customer");
+		OrdersInfoTable order = new OrdersInfoTable();
+		//List<ServicesInfoTable> list=daoCustomOrder.findByORderId()
+		GregorianCalendar date = new GregorianCalendar();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date utildate = format.parse(eventDate);
+		java.sql.Date date3 = new java.sql.Date(utildate.getTime());
+
+		order.setCustomerInfoTable(cs);
+		
+		order.setOrderDate(date.getTime());
+		order.setEventDate(date3);
+		order.setEventTime(eventTime);
+		order.setEventVenue(eventVenue);
+		order.setNumberOfGuests(numberOfGuests);
+	//	order.setOrderAmount();
+		order.setOrderStatus("Confirmed");
+		daoOrders.insertOrder(order);
+		//CustomerInfoTable customer = (CustomerInfoTable) session.getAttribute("Customer");
+		/*
+		 * String cmail = customer.getCustomerEmail(); EmailSender email = new
+		 * EmailSender(); email.orderConfirm(cmail, "Order Confirmed",
+		 * "Order Confirmed");
+		 */
+		return "index";
+	}
+
+	
+	
+	
+	
 	@RequestMapping("/ordercancel")
 	public String cancelOrders(@RequestParam int id) {
 		OrdersInfoTable obj = daoOrders.findById(id).get();

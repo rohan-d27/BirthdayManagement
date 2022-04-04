@@ -24,6 +24,7 @@ public class OrdersDAO {
 	public boolean insertOrder(OrdersInfoTable obj) {
 
 		repo.save(obj);
+		
 		return true;
 	}
 

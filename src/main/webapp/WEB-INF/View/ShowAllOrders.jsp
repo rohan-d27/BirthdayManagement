@@ -252,7 +252,7 @@
                                                    int id=obj.getOrderId();
                                                    java.util.Date eventdate=obj.getEventDate();
                                                    String time=obj.getEventTime();
-                                                   String venue=obj.getEventTime();
+                                                   String venue=obj.getEventVenue();
                                                    int noofguest=obj.getNumberOfGuests();
                                                    double cost=obj.getOrderAmount();
                                                    java.util.Date orderdate=obj.getOrderDate();

@@ -21,7 +21,10 @@ public class CustomOrderDAO {
 
 		return repo.findAll();
 	}
+	public List<ServicesInfoTable> findByORderId(int id) {
 
+		return repo.findByORderId(id);
+	}
 	public void insertCustomOrder(CustomOrderTable obj) {
 		repo.save(obj);
 	}

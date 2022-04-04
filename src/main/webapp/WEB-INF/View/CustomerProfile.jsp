@@ -177,7 +177,7 @@ body {
 				<div class="row">
 
 					<%
-  CustomerInfoTable obj=(CustomerInfoTable)request.getAttribute("Customer");
+  CustomerInfoTable obj=(CustomerInfoTable)session.getAttribute("Customer");
   String address="",city="";
   int zipcode=0;
   if(obj.getCustomerCity()!=null)

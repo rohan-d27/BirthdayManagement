@@ -85,7 +85,7 @@
 								<%}
                                   else if(customer!=null)
                                   {%>
-								<li><a href="#"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
+								<li><a href="/CustomerProfile"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
 									<ul>
 										<li><a href="/ordercustomerorderlist">OrdersInfo</a></li>
 										<li><a href="/logout">Logout</a></li>
@@ -95,7 +95,7 @@
                                   else if(serviceprovider!=null)
                                   {
                                   %>
-								<li><a href="#"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
+								<li><a href="/ServiceProviderDashboard"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
 									<ul>
 										 <li><a href="/ordersporderlist">OrdersInfo</a></li>
 										<li><a href="/logout">Logout</a></li>

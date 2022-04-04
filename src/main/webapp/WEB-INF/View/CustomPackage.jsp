@@ -1,7 +1,10 @@
 <!doctype html>
-<%@page import="project.entities.ServiceProviderInfoTable"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="project.entities.ServicesInfoTable"%>
 <%@page import="project.entities.CustomerInfoTable"%>
 <%@page import="project.entities.AdminInfoTable"%>
+<%@page import="project.entities.ServiceProviderInfoTable"%>
+<%@page import="java.util.List"%>
 <html>
 
 <head>
@@ -138,10 +141,10 @@
                                   else if(customer!=null)
                                   {%>
                                 <li>
-                                     <a href="#"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
+                                     <a href="/CustomerProfile"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
                                     <ul>
                                    <li><a href="/ordercustomerorderlist">OrdersInfo</a></li>
-                                    <li><a href="login-form/Login.html">Logout</a></li>
+                                    <li><a href="/logout">Logout</a></li>
                                    
                                      </ul>
                                 </li>
@@ -152,7 +155,7 @@
                                    <li>
                                      <a href="#"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
                                     <ul>
-                                    <li><a href="login-form/Login.html">Logout</a></li>
+                                    <li><a href="/logout">Logout</a></li>
                                    
                                   </ul>
                                 </li>
@@ -164,7 +167,7 @@
                                   <li>
                                      <a href="/AdminDashboardPackageDetails"><%=admin.getAdminFname()+" "+admin.getAdminLname() %></a>
                                     <ul>
-                                    <li><a href="login-form/Login.html">Logout</a></li>
+                                    <li><a href="/logout">Logout</a></li>
                                    
                                   </ul>
                                 </li>
@@ -197,27 +200,31 @@
                 <div class="col-md-3 border-right">
                     <!--  <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div> -->
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span
-                            class="font-weight-bold">Welcome User</span><span
-                            class="text-black-50">user007@mail.com</span><span> </span></div>
+                            class="font-weight-bold"><%=customer.getCustomerFname() %></span><span
+                            class="text-black-50"><%=customer.getCustomerEmail() %></span><span> </span></div>
                 </div>
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Custom Package</h4>
                         </div>
-                       
-                        <form>     
-                             
+                        <%
+                        List<ServicesInfoTable> list=(List<ServicesInfoTable>)request.getAttribute("Services");
+                        List<ServicesInfoTable> list2= new ArrayList<ServicesInfoTable>();
+                        %>
+                        <form method="post" action="/ViewCustomOrderDetails">     
+                             <%for(int i=0;i<list.size();i++) {%>
                             <div class="form-group">
-                              <label for="cakes">Cakes</label>
-                              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="cakes">
+                              <label for="cakes"><%=list.get(i).getServiceName() %></label>
+                              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="<%=list.get(i).getServiceName() %>">
                                 <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="Yes" <%=list2.add(list.get(i) %>>Yes</option>
+                                <option value="No">No</option>
+                                
                               </select>
                             </div>
-                            <div class="form-group">
+                           <%} %>
+                           <!-- <div class="form-group">
                                 <label for="catering">Catering</label>
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="catering">
                                   <option selected>Open this select menu</option>
@@ -261,7 +268,7 @@
                                   <option value="2">Two</option>
                                   <option value="3">Three</option>
                                 </select>
-                              </div>
+                              </div>-->
                               <div class="mt-5 text-center" role="group">
                                 <button style="font-size: 16px;" class="btn btn-primary profile-button" type="submit">Order</button></div>
                             

@@ -2,6 +2,8 @@ package project.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import project.dao.CustomOrderDAO;
+import project.dao.PackagesDAO;
+import project.dao.ServicesDAO;
 import project.entities.CustomOrderTable;
 import project.entities.CustomOrderTablePK;
 import project.entities.OrdersInfoTable;
+import project.entities.PackagesInfoTable;
 import project.entities.ServicesInfoTable;
 
 @Controller
@@ -23,6 +28,10 @@ public class CustomOrderController {
 
 	@Autowired
 	CustomOrderDAO daoCustomOrder;
+	@Autowired
+	ServicesDAO daoServices;
+	@Autowired
+	PackagesDAO daoPackages;
 
 	@RequestMapping("/customorderlist")
 	public ModelAndView getListOfCustomOrder() {
@@ -34,16 +43,29 @@ public class CustomOrderController {
 		mv.setViewName("showcustomorder");
 		return mv;
 	}
+	@PostMapping("/CustomPackage")
+	public ModelAndView customPackage(@RequestParam int packageId,HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		PackagesInfoTable pk=daoPackages.findById(packageId).get();
+		List<ServicesInfoTable> list =daoServices.findAll();
+		session.setAttribute("package2", pk);
+		mv.addObject("Services", list);
+		mv.setViewName("ViewCustomOrderDetails");
+		return mv;
+	}
+	
 
 	@PostMapping(path = "/customorderinsert", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String insertCustomOrder(@RequestParam MultiValueMap<String, String> paramMap,
-			@RequestParam OrdersInfoTable order, @RequestParam ServicesInfoTable service) throws Exception {
+			@RequestParam OrdersInfoTable order, @RequestParam List<ServicesInfoTable> service) throws Exception {
 		CustomOrderTable customorder = new CustomOrderTable();
+		
 		customorder.setOrdersInfoTable(order);
-		customorder.setServicesInfoTable(service);
-
+		for(int i=0;i<service.size();i++)
+		{customorder.setServicesInfoTable(service.get(i));
+		
 		if (customorder.getOrdersInfoTable() != null)
-			daoCustomOrder.insertCustomOrder(customorder);
+			daoCustomOrder.insertCustomOrder(customorder);}
 		return "index";
 	}
 

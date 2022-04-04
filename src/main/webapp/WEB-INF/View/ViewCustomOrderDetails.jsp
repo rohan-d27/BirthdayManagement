@@ -3,10 +3,12 @@
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="project.entities.ServiceProviderInfoTable"%>
+<%@page import="project.entities.ServicesInfoTable"%>
 <%@page import="project.entities.AdminInfoTable"%>
 <%@page import="project.entities.PackagesInfoTable"%>
 <%@page import="project.entities.OrdersInfoTable"%>
 <%@page import="project.entities.CustomerInfoTable"%>
+<%@page import="java.util.List"%>
 <html>
 
 <head>
@@ -127,9 +129,9 @@ body {
                                 
                                  <li><a href="#">Login</a>
                                     <ul>
-                                    <li><a href="/CustomerLogin">Customer</a></li>
-                                    <li><a href="/AdminLogin">Admin</a></li>
-                                    <li><a href="/ServiceLogin">Service Provider</a></li>
+                                    <li><a href="/userLogin">User</a></li>
+                                    <li><a href="/adminLogin">Admin</a></li>
+                                    <li><a href="/serviceLogin">Service Provider</a></li>
                                   </ul>
                                 </li>
                                 <%}
@@ -251,7 +253,7 @@ body {
 					</div>
 				</div>
 				<div class="col-md-5 border-right">
-					<form action="/confirmorder" method="post">
+					<form action="/confircustommorder" method="post">
 						<div class="p-3 py-5">
 							<div
 								class="d-flex justify-content-between align-items-center mb-3">
@@ -282,7 +284,27 @@ body {
 								</div>
 
 							</div>
-
+<div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Custom Package</h4>
+                        </div>
+                        <%
+                        List<ServicesInfoTable> list=(List<ServicesInfoTable>)request.getAttribute("Services");
+                        
+                        %>
+                        
+                             <%for(int i=0;i<list.size();i++) {%>
+                            <div class="form-group">
+                              <label for="cakes"><%=list.get(i).getServiceName() %></label>
+                              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="<%=list.get(i).getServiceName() %>">
+                                <option selected>Open this select menu</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                
+                              </select>
+                            </div>
+                           <%} %>
 							<div class="mt-5 text-center">
 								<button class="btn btn-primary profile-button" type="submit">Confirm
 									Order</button>
@@ -290,12 +312,28 @@ body {
 						</div>
 					</form>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 " ">
 					<div class="p-3 py-5">
 						<div
 							class="d-flex justify-content-between align-items-center experience">
 							<span>
-								
+								<h4>Package Information</h4>
+							</span><span class="border px-3 p-1 add-experience">Description</span>
+						</div>
+						<br>
+						<div class="col-md-12">
+							<label class="labels">Name</label> <input type="text" value="<%=package1.getPackageName() %>" class="form-control" placeholder="Name" readonly>
+						</div>
+						<br>
+						<div class="col-md-12">
+							<label class="labels">Details</label><input type="text" readonly class="form-control" placeholder="Details" value="<%=package1.getPackageDesc()%>">
+						</div>
+						<br>
+						<div class="col-md-12">
+							<label class="labels">Price</label> <input type="text" readonly class="form-control" placeholder="Price" value="<%=package1.getPackagePrice() %>">
+						</div>
+						<br>
+
 					</div>
 				</div>
 

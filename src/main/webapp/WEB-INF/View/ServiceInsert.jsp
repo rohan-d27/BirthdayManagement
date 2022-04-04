@@ -1,14 +1,13 @@
-<%@page import="project.entities.ServiceProviderInfoTable"%>
-<%@page import="project.entities.CustomerInfoTable"%>
+
 <%@page import="project.entities.AdminInfoTable"%>
 <%@page import="java.util.List"%>
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
-
+ 
+<%@page import="project.entities.ServicesInfoTable"%>
 <!doctype html>
 <html>
 
 <head>
-<title>Package Details Insert</title>
+<title>Add Service </title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -134,59 +133,37 @@ label {
 
                         <a href="/Contact" class="btn-rsvp">Contact</a>
 
-                       <!-- mainmenu begin -->
+                                    <!-- mainmenu begin -->
                         <nav>
                             <ul id="mainmenu">
                                 <li><a href="/">Home</a></li>
 								<li><a href="/about">About</a></li>
                                 <li><a href="/services">Services</a></li>
-                                <li><a href="/packages" >Packages</a></li>
+                                <li><a href="/Services" >Services</a></li>
                                 <%
                                    AdminInfoTable admin=(AdminInfoTable)session.getAttribute("Admin"); 
-                                  CustomerInfoTable customer=(CustomerInfoTable)session.getAttribute("Customer");
-                                  ServiceProviderInfoTable serviceprovider=(ServiceProviderInfoTable)session.getAttribute("Serviceprovider");
-                                  if(admin==null && customer==null && serviceprovider==null)
+                          
+                                  if(admin==null )
                                   {
                                   
                                 %>
                                 
                                  <li><a href="#">Login</a>
                                     <ul>
-                                    <li><a href="/userLogin">User</a></li>
-                                    <li><a href="/adminLogin">Admin</a></li>
-                                    <li><a href="/serviceLogin">Service Provider</a></li>
+                                    <li><a href="/CustomerLogin">Customer</a></li>
+                                    <li><a href="/AdminLogin">Admin</a></li>
+                                    <li><a href="/ServiceProviderLogin">Service Provider</a></li>
                                   </ul>
                                 </li>
                                 <%}
-                                  else if(customer!=null)
-                                  {%>
-                                <li>
-                                     <a href="#"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
-                                    <ul>
-                                    <li><a href="login-form/Login.html">Logout</a></li>
-                                   
-                                     </ul>
-                                </li>
-                                <%}
-                                  else if(serviceprovider!=null)
-                                  {
-                                  %>
-                                   <li>
-                                     <a href="#"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
-                                    <ul>
-                                    <li><a href="login-form/Login.html">Logout</a></li>
-                                   
-                                  </ul>
-                                </li>
-                              
-                                <% }
+                                 
                                   else if(admin!=null)
                                   {
                                 	 %> 
                                   <li>
-                                     <a href="#"><%=admin.getAdminFname()+" "+admin.getAdminLname() %></a>
+                                     <a href="/AdminDashboardServiceDetails"><%=admin.getAdminFname()+" "+admin.getAdminLname() %></a>
                                     <ul>
-                                    <li><a href="login-form/Login.html">Logout</a></li>
+                                    <li><a href="/logout">Logout</a></li>
                                    
                                   </ul>
                                 </li>
@@ -198,6 +175,7 @@ label {
                             </ul>
                         </nav>
 						<!-- mainmenu close -->
+
 
                     </div>
 
@@ -218,9 +196,9 @@ label {
 		<div class="container rounded bg-white mt-5 mb-5"
 			style="background-color: #ccad00;">
   
-      
+       
 			<div class="row">
-               	<form method="POST" action="/packageinsert" >
+               	<form  action="/ServiceInsert" method="post" >
 				<div class="col-md-4">
 					<!--  <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div> -->
 
@@ -229,32 +207,32 @@ label {
 				<div class="col-md-4">
 					<div class="d-flex flex-column align-items-center text-center p-3 py-5">
 						<h2>
-							<span class="font-weight-bold">Add Package</span>
+							<span class="font-weight-bold">Add Service</span>
 						</h2>
 					</div>
 					<div class="row mt-2">
 						
 						<div class="col-md-12">
-							<label class="labels">Package Name</label> 
-							<input type="text" class="form-control" name="packageName" value="" placeholder="Package Name"/>
+							<label class="labels">Service Name</label> 
+							<input type="text" class="form-control" name="serviceName" value="" required/>
 						</div>
 					</div>
 
 					<div class="row mt-3">
 						<div class="col-md-12">
-							<label class="labels">Package Description</label>
-							 <input type="text" name="packageDesc" class="form-control" value="" placeholder="Package Description" />
+							<label class="labels">Service Description</label>
+							 <input type="text" name="serviceDesc" class="form-control" value="" required/>
 						</div>
 						<div class="col-md-12">
-              	    <label class="labels">Package Cost </label> 
-              	    <input type="text" class="form-control" name="packagePrice" value="" placeholder="Package Cost" />
+              	    <label class="labels">Service Cost </label> 
+              	    <input type="text" class="form-control" name="servicePrice" value="" required/>
 						</div>
 
 					</div>
 				             
 				               <div class="mt-5 text-center">
 
-                               <button class="btn btn-primary profile-button" type="submit"> <a style="text-decoration: none;color: #fff;">Add</a>  
+                               <button class="btn btn-primary profile-button" type="submit"> <a  style="text-decoration: none;color: #fff;">Add</a>  
                                </button>
                                 </div>
 						<br> <br> <br>

@@ -11,6 +11,7 @@ import project.entities.ServicesInfoTable;
 
 @Repository
 public interface ServicesRepository extends JpaRepository<ServicesInfoTable, Integer> {
+	@Query(value = "select * from  services_info_table where service_provider_id=:id", nativeQuery = true)
 	public List<ServicesInfoTable> findByserviceProviderInfoTable(int id);
 
 	@Query(value = "select services_info_table.* from packages_services_table natural join services_info_table where package_id=:id", nativeQuery = true)

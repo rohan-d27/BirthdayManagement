@@ -36,18 +36,22 @@ public class ServicesController {
 		return mv;
 	}
 
-	@PostMapping(path = "/servicesinsert", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+	@RequestMapping("/addService")
+	public String addServices() {	
+
+		return "ServiceInsert";
+	}
+	@PostMapping(path = "/ServiceInsert")
 	public String insertService(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam String serviceName,
-			@RequestParam String serviceDesc, @RequestParam byte[] serviceImages, @RequestParam double servicePrice,
-			@RequestParam ServiceProviderInfoTable serviceProvider) throws Exception {
+			@RequestParam String serviceDesc,  @RequestParam double servicePrice,
+			HttpSession session)  {
+		ServiceProviderInfoTable sp=(ServiceProviderInfoTable)session.getAttribute("Serviceprovider");
 		ServicesInfoTable service = new ServicesInfoTable();
 		service.setServiceName(serviceName);
 		service.setServiceDesc(serviceDesc);
-		service.setServicePrice(servicePrice);
-		service.setServiceImages(serviceImages);
-		service.setServiceProviderInfoTable(serviceProvider);
-		if (service.getServiceName() != null)
-			daoServices.insertServices(service);
+		service.setServicePrice(servicePrice);	
+		service.setServiceProviderInfoTable(sp);
+       daoServices.insertServices(service);
 		return "index";
 	}
 

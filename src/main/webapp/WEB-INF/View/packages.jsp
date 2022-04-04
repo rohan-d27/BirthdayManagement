@@ -88,7 +88,7 @@
                                   else if(customer!=null)
                                   {%>
                                 <li>
-                                     <a href="#"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
+                                     <a href="/CustomerProfile"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
                                     <ul>
                                     <li><a href="/ordercustomerorderlist">OrdersInfo</a></li>
                                     <li><a href="/logout">Logout</a></li>
@@ -100,7 +100,7 @@
                                   {
                                   %>
                                    <li>
-                                     <a href="#"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
+                                     <a href="/ServiceProviderDashboard"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
                                     <ul>
                                      <li><a href="/ordersporderlist">OrdersInfo</a></li>
                                     <li><a href="/logout">Logout</a></li>
@@ -197,7 +197,7 @@
 										</form>
 									<%} %>
 									
-									<form action="/CustomPackage"">
+									<!--  -<form action="/CustomPackage" method="post">
                                         <div class="col-sm-4">
 											<div class="pricing-s1 mb30">
 												<div class="top">
@@ -218,7 +218,7 @@
 												</div>
 											</div>
 										</div>
-									</form>
+									</form>->
 									</div>	
 								</div>
 							</div>

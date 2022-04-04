@@ -91,7 +91,7 @@
                                   else if(customer!=null)
                                   {%>
                                 <li>
-                                     <a href="#"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
+                                     <a href="/CustomerProfile"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
                                     <ul>
                                     <li><a href="/logout">Logout</a></li>
                                    
@@ -102,7 +102,7 @@
                                   {
                                   %>
                                    <li>
-                                     <a href="#"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
+                                     <a href="/SeviceDashboardServiceDetails"><%=serviceprovider.getServiceProviderFname()+" "+serviceprovider.getServiceProviderLname() %></a>
                                     <ul>
                                     <li><a href="/logout">Logout</a></li>
                                    
@@ -114,7 +114,7 @@
                                   {
                                 	 %> 
                                   <li>
-                                     <a href="#"><%=admin.getAdminFname()+" "+admin.getAdminLname() %></a>
+                                     <a href="/AdminDashboardPackageDetails"><%=admin.getAdminFname()+" "+admin.getAdminLname() %></a>
                                     <ul>
                                      <li><a href="/orderlist">OrdersInfo</a></li>
                                     <li><a href="/logout">Logout</a></li>

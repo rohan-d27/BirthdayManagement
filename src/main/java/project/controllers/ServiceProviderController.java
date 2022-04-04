@@ -37,7 +37,7 @@ public class ServiceProviderController {
 		return "ServiceProviderLogin";
 	}
 	//updated
-	@RequestMapping("/SeviceDashboardServiceDetails")
+	@RequestMapping("/ServiceProviderDashboard")
 	public ModelAndView serviceDash(HttpSession session)
 	{
 		ModelAndView mv = new ModelAndView();
@@ -79,12 +79,7 @@ public class ServiceProviderController {
 		}
 	}
 
-	@RequestMapping("/ServiceProviderProfile")
-	public ModelAndView serviceproviderProfile() {
-		ModelAndView obj = new ModelAndView();
-		obj.setViewName("ServiceProviderProfile");
-		return obj;
-	}
+	
 
 	@PostMapping("/ServiceProviderVerify")
 	public ModelAndView verify(HttpServletRequest request, @RequestParam String serviceProviderUsername,@RequestParam String serviceProviderPassword) {
