@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import project.dao.ServiceProviderDAO;
 import project.dao.ServicesDAO;
 import project.entities.ServiceProviderInfoTable;
@@ -33,24 +32,23 @@ public class ServiceProviderController {
 
 	@RequestMapping("/serviceLogin")
 	public String serviceLogin() {
-		
+
 		return "ServiceProviderLogin";
 	}
-	//updated
+
+	// updated
 	@RequestMapping("/ServiceProviderDashboard")
-	public ModelAndView serviceDash(HttpSession session)
-	{
+	public ModelAndView serviceDash(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		ServiceProviderInfoTable serviceprovider= (ServiceProviderInfoTable)session.getAttribute("Serviceprovider");
-		List<ServicesInfoTable> services=daoServices.findbyServiceproviderId(serviceprovider);
-		if(services!=null)
-		mv.addObject("Services", services);
+		ServiceProviderInfoTable serviceprovider = (ServiceProviderInfoTable) session.getAttribute("Serviceprovider");
+		List<ServicesInfoTable> services = daoServices.findbyServiceproviderId(serviceprovider);
+		if (services != null)
+			mv.addObject("Services", services);
 		mv.setViewName("ServiceProviderDashboard");
-		 
+
 		return mv;
 	}
-	
-	
+
 	@RequestMapping("/serviceproviderslist")
 	public ModelAndView getListOfServiceProviders() {
 		ModelAndView mv = new ModelAndView();
@@ -61,8 +59,6 @@ public class ServiceProviderController {
 		mv.setViewName("showserviceproviders");
 		return mv;
 	}
-
-
 
 	@GetMapping("/ServiceProviderLogin")
 	public ModelAndView serviceProviderLogin(HttpServletRequest request) {
@@ -79,12 +75,12 @@ public class ServiceProviderController {
 		}
 	}
 
-	
-
 	@PostMapping("/ServiceProviderVerify")
-	public ModelAndView verify(HttpServletRequest request, @RequestParam String serviceProviderUsername,@RequestParam String serviceProviderPassword) {
+	public ModelAndView verify(HttpServletRequest request, @RequestParam String serviceProviderUsername,
+			@RequestParam String serviceProviderPassword) {
 		ModelAndView obj = new ModelAndView();
-		obj.addObject("user",daoServiceProvider.validateServiceprovider(serviceProviderUsername, serviceProviderPassword));
+		obj.addObject("user",
+				daoServiceProvider.validateServiceprovider(serviceProviderUsername, serviceProviderPassword));
 		ServiceProviderInfoTable serviceproviderdata = daoServiceProvider.findbyUsername(serviceProviderUsername);
 		request.getSession().setAttribute("Serviceprovider", serviceproviderdata);
 		obj.addObject("services", daoServices.findAll());

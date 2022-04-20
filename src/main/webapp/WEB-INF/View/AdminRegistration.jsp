@@ -124,7 +124,7 @@
     
     <br><br><br><br><br><br><br>
 <body oncontextmenu=' false' class='snippet-body'>
-    <div class="container rounded bg-#ccad00 mt-5 mb-5">
+    <div class="container rounded bg-white mt-5 mb-5">
         <div class="col-md-3">
            
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"></div>
@@ -139,20 +139,20 @@
                     <form action="AdminInsert" method="post">
                     
                         <div class="form-outline mb-4">
-                            <label for="firstname" class="form-label">First Name</label>
+                            <label for="firstname" style="color:#000000" class="form-label">First Name</label>
                             <input type="text" name="adminFname" id="adminFname" class="form-control" placeholder="First Name"  required>
                         
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="LastName" class="form-label">Last Name</label>
+                            <label for="LastName" style="color:#000000" class="form-label">Last Name</label>
                             <input type="text" name="adminLname" id="adminLname"  class="form-control" placeholder="Last Name"    required>  
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="user" class="form-label">User Name</label> 
+                            <label for="user" style="color:#000000" class="form-label">User Name</label> 
                             <input type="text" name="adminUsername" id="user"  class="form-control" placeholder="User Name" required>
                         </div>  
                          <div class="form-outline mb-4">
-                            <label for="mobileno" class="form-label">Mobile Number</label> 
+                            <label for="mobileno" style="color:#000000" class="form-label">Mobile Number</label> 
                             <input type="text "name="adminMobno" id="adminMobno"  pattern="[0-9]+" class="form-control" placeholder="Mobile Number" required>
                          </div>  
                          <div class="form-outline mb-4">
@@ -160,39 +160,19 @@
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="adminEmail">Email address</label>
+                            <label class="form-label" style="color:#000000" for="adminEmail">Email address</label>
                           <input type="email" id="adminEmail" class="form-control" name="adminEmail" placeholder="Email address" />
                         
                         </div>
                     
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="form2Example2" >Password</label>
+                        <label class="form-label" style="color:#000000" for="form2Example2" >Password</label>
                         <input type="password" id="form2Example2" class="form-control" name="adminPassword" placeholder="Password" />
                         
                         </div>
                     
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                        <div class="col d-flex justify-content-center">
-                            <!-- Checkbox -->
-                            <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="form2Example31"
-                                checked
-                            />
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                            </div>
-                        </div>
-                    
-                        <div class="col">
-                            <!-- Simple link -->
-                            <a href="/AdminForget" style="font-size: medium; color: #448dc2;">Forgot password?</a>
-                        </div>
-                        </div>
+                      
                     
                         <!-- Submit button -->
                         <button class="btn btn-primary profile-button  btn-block mb-4" type="submit">Register</button>

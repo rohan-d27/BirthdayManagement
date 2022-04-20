@@ -7,7 +7,7 @@
 <html>
 
            <head>
-               <title>ServiceProviderDashBoard</title>
+               <title>CustomersOrderDetails</title>
                <meta charset="utf-8">
                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
               <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
@@ -154,6 +154,7 @@
                                      <a href="/CustomerProfile"><%=customer.getCustomerFname()+" "+customer.getCustomerLname() %></a>
                                     <ul>
                                       <li><a href="/ordercustomerorderlist">OrdersInfo</a></li>
+                                    <li><a href="/feedbackpage">Feedback</a></li>
                                     <li><a href="/logout">Logout</a></li>
                                    
                                   </ul>

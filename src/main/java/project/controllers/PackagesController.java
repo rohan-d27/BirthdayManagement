@@ -37,6 +37,7 @@ public class PackagesController {
 		mv.setViewName("packages");
 		return mv;
 	}
+
 	@RequestMapping("/AddNewPackage")
 	public ModelAndView addPackages() {
 		ModelAndView mv = new ModelAndView();

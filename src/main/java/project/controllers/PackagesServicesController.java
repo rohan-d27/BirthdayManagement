@@ -28,10 +28,11 @@ public class PackagesServicesController {
 	PackagesServicesDAO daoPackagesServices;
 	@Autowired
 	ServicesDAO daoServices;
+
 	@RequestMapping("/PackageServicesList")
 	public ModelAndView packageserviceedit(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		PackagesInfoTable pk=(PackagesInfoTable)session.getAttribute("package");
+		PackagesInfoTable pk = (PackagesInfoTable) session.getAttribute("package");
 		List<ServicesInfoTable> list = daoServices.findBypackageId(pk.getPackageId());
 		mv.addObject("Services", list);
 		return mv;
@@ -41,9 +42,9 @@ public class PackagesServicesController {
 	@RequestMapping("/PackageServiceDetailsEdit")
 	public ModelAndView packageserviceedit2(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		PackagesInfoTable pk=(PackagesInfoTable)session.getAttribute("package");
+		PackagesInfoTable pk = (PackagesInfoTable) session.getAttribute("package");
 		List<ServicesInfoTable> list = daoServices.findBypackageId(pk.getPackageId());
-		List<ServicesInfoTable> listall=daoServices.findAll();
+		List<ServicesInfoTable> listall = daoServices.findAll();
 		mv.addObject("AllServices", listall);
 		mv.addObject("NewAddServices", list);
 		return mv;

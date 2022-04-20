@@ -24,7 +24,7 @@ public class OrdersDAO {
 	public boolean insertOrder(OrdersInfoTable obj) {
 
 		repo.save(obj);
-		
+
 		return true;
 	}
 
@@ -73,14 +73,12 @@ public class OrdersDAO {
 
 	}
 
-	
-
 	public List<OrdersInfoTable> findbyCustomerId(CustomerInfoTable c) {
 		int id = c.getCustomerId();
 		return repo.findByCustomerId(id);
 	}
-	public  List<OrdersInfoTable>  findByServiceProvidersId(int id)
-	{
+
+	public List<OrdersInfoTable> findByServiceProvidersId(int id) {
 		return repo.findByServiceProvidersId(id);
 	}
 }

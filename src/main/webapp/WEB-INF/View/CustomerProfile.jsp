@@ -125,6 +125,9 @@ body {
                                   else if(customer!=null)
                                   {%>
 							<li><a href="#"><%=customer.getCustomerFname()+" "+customer.getCustomerLname()%></a>
+							 <li><a href="/ordercustomerorderlist">OrdersInfo</a></li>
+							<li><a href="/feedbackpage">Feedback</a></li>
+							
 								<ul>
 									<li><a href="/logout">Logout</a></li>
 

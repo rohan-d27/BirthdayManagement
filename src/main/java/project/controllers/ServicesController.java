@@ -37,21 +37,21 @@ public class ServicesController {
 	}
 
 	@RequestMapping("/addService")
-	public String addServices() {	
+	public String addServices() {
 
 		return "ServiceInsert";
 	}
+
 	@PostMapping(path = "/ServiceInsert")
 	public String insertService(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam String serviceName,
-			@RequestParam String serviceDesc,  @RequestParam double servicePrice,
-			HttpSession session)  {
-		ServiceProviderInfoTable sp=(ServiceProviderInfoTable)session.getAttribute("Serviceprovider");
+			@RequestParam String serviceDesc, @RequestParam double servicePrice, HttpSession session) {
+		ServiceProviderInfoTable sp = (ServiceProviderInfoTable) session.getAttribute("Serviceprovider");
 		ServicesInfoTable service = new ServicesInfoTable();
 		service.setServiceName(serviceName);
 		service.setServiceDesc(serviceDesc);
-		service.setServicePrice(servicePrice);	
+		service.setServicePrice(servicePrice);
 		service.setServiceProviderInfoTable(sp);
-       daoServices.insertServices(service);
+		daoServices.insertServices(service);
 		return "index";
 	}
 
@@ -75,7 +75,7 @@ public class ServicesController {
 	@GetMapping(path = "/servicesserviceproviderslist", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public ModelAndView getListForServiceProvider(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		ServiceProviderInfoTable sp=(ServiceProviderInfoTable)session.getAttribute("Serviceprovider");
+		ServiceProviderInfoTable sp = (ServiceProviderInfoTable) session.getAttribute("Serviceprovider");
 		List<ServicesInfoTable> list = daoServices.findbyServiceproviderId(sp);
 		mv.addObject("services", list);
 		mv.setViewName("servicesbyserviceproviders");

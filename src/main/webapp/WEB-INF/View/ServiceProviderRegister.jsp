@@ -124,7 +124,7 @@
     
     <br><br><br><br><br><br><br>
 <body oncontextmenu=' false' class='snippet-body'>
-    <div class="container rounded bg-#ccad00 mt-5 mb-5">
+    <div class="container rounded bg-white mt-5 mb-5">
         <div class="col-md-3">
            
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"></div>
@@ -142,20 +142,20 @@
                     <form action="/ServiceProviderInsert" method="post">
                     
                         <div class="form-outline mb-4">
-                            <label for="serviceProviderFname" class="form-label">First Name</label>
+                            <label for="serviceProviderFname" style="color:#000000" class="form-label">First Name</label>
                             <input type="text" name="serviceProviderFname" id="serviceProviderFname" class="form-control" placeholder="First Name"  required>
                         
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="customerLname" class="form-label">Last Name</label>
+                            <label for="customerLname" style="color:#000000" class="form-label">Last Name</label>
                             <input type="text" name="serviceProviderLname" id="serviceProviderLname"  class="form-control" placeholder="serviceProviderLname"    required>  
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="serviceProviderUsername" class="form-label">User Name</label> 
+                            <label for="serviceProviderUsername" style="color:#000000" class="form-label">User Name</label> 
                             <input type="text" name="serviceProviderUsername" id="serviceProviderUsername"  class="form-control" placeholder="User Name" required>
                         </div>  
                          <div class="form-outline mb-4">
-                            <label for="serviceProviderMobno" class="form-label">Mobile Number</label> 
+                            <label for="serviceProviderMobno" style="color:#000000" style="color:#000000" class="form-label">Mobile Number</label> 
                             <input type="text" name="serviceProviderMobno" id="serviceProviderMobno"  pattern="[0-9]+" class="form-control" placeholder="Mobile Number" required>
                          </div>  
                          <div class="form-outline mb-4">
@@ -163,39 +163,19 @@
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="serviceProviderEmail">Email address</label>
+                            <label class="form-label" style="color:#000000" for="serviceProviderEmail">Email address</label>
                           <input type="email" id="serviceProviderEmail" class="form-control" name="serviceProviderEmail" placeholder="Email address" />
                         
                         </div>
                     
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="serviceProviderPassword" >Password</label>
+                        <label class="form-label" style="color:#000000" for="serviceProviderPassword" >Password</label>
                         <input type="password" id="serviceProviderPassword" class="form-control" name="serviceProviderPassword" placeholder="Password" />
                         
                         </div>
                     
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                        <div class="col d-flex justify-content-center">
-                            <!-- Checkbox -->
-                            <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="form2Example31"
-                                checked
-                            />
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                            </div>
-                        </div>
-                    
-                        <div class="col">
-                            <!-- Simple link -->
-                            <a href="/ServiceProviderForget" style="font-size: medium; color: #448dc2;">Forgot password?</a>
-                        </div>
-                        </div>
+                        
                     
                         <!-- Submit button -->
                         <button class="btn btn-primary profile-button  btn-block mb-4" type="submit">Register</button>

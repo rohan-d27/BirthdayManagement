@@ -124,7 +124,7 @@
     
     <br><br><br><br><br><br><br>
 <body oncontextmenu=' false' class='snippet-body'>
-    <div class="container rounded bg-#ccad00 mt-5 mb-5">
+    <div class="container rounded bg-white mt-5 mb-5">
         <div class="col-md-3">
            
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"></div>
@@ -139,20 +139,20 @@
                     <form action="/CustomerInsert" method="post">
                     
                         <div class="form-outline mb-4">
-                            <label for="customerFname" class="form-label">First Name</label>
+                            <label for="customerFname" style="color:#000000" class="form-label">First Name</label>
                             <input type="text" name="customerFname" id="customerFname" class="form-control" placeholder="First Name"  required>
                         
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="customerLname" class="form-label">Last Name</label>
+                            <label for="customerLname" style="color:#000000" class="form-label">Last Name</label>
                             <input type="text" name="customerLname" id="customerLname"  class="form-control" placeholder="Last Name"    required>  
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="customerUsername" class="form-label">User Name</label> 
+                            <label for="customerUsername" style="color:#000000" class="form-label">User Name</label> 
                             <input type="text" name="customerUsername" id="customerUsername"  class="form-control" placeholder="User Name" required>
                         </div>  
                          <div class="form-outline mb-4">
-                            <label for="customerMobno" class="form-label">Mobile Number</label> 
+                            <label for="customerMobno" style="color:#000000" class="form-label">Mobile Number</label> 
                             <input type="text "name="customerMobno" id="customerMobno"  pattern="[0-9]+" class="form-control" placeholder="Mobile Number" required>
                          </div>  
                          <div class="form-outline mb-4">
@@ -160,39 +160,18 @@
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="customerEmail">Email address</label>
+                            <label class="form-label" style="color:#000000" for="customerEmail">Email address</label>
                           <input type="email" id="customerEmail" class="form-control" name="customerEmail" placeholder="Email address" />
                         
                         </div>
                     
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="customerPassword" >Password</label>
+                        <label class="form-label" style="color:#000000" for="customerPassword" >Password</label>
                         <input type="password" id="customerPassword" class="form-control" name="customerPassword" placeholder="Password" />
                         
                         </div>
                     
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                        <div class="col d-flex justify-content-center">
-                            <!-- Checkbox -->
-                            <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="form2Example31"
-                                checked
-                            />
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                            </div>
-                        </div>
-                    
-                        <div class="col">
-                            <!-- Simple link -->
-                            <a href="/CustomerForget" style="font-size: medium; color: #448dc2;">Forgot password?</a>
-                        </div>
-                        </div>
                     
                         <!-- Submit button -->
                         <button class="btn btn-primary profile-button  btn-block mb-4" type="submit">Register</button>

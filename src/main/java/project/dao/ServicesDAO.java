@@ -65,9 +65,9 @@ public class ServicesDAO {
 		int id = s.getServiceProviderId();
 		return repo.findByserviceProviderInfoTable(id);
 	}
+
 	public List<ServicesInfoTable> findBypackageId(int id) {
 
-		
 		return repo.findBypackageId(id);
 	}
 }

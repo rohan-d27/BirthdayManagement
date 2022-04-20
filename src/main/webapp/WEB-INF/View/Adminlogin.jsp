@@ -124,7 +124,7 @@
         
         <br><br><br><br><br><br><br>
     <body oncontextmenu='return false' class='snippet-body'>
-        <div class="container rounded bg-#ccad00 mt-5 mb-5">
+        <div class="container rounded bg-white mt-5 mb-5">
             <div class="col-md-3">
             
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"></div>
@@ -139,14 +139,14 @@
                         <form action="/AdminVerify" method="post">
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example1">Username</label>
+                                <label class="form-label" style="color:#000000" for="form2Example1">Username</label>
                             <input type="text" id="form2Example1" class="form-control" name="adminUsername" />
                             
                             </div>
                         
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example2" >Password</label>
+                            <label class="form-label" style="color:#000000" for="form2Example2" >Password</label>
                             <input type="password" id="form2Example2" class="form-control" name="adminPassword" />
                             
                             </div>
@@ -163,7 +163,7 @@
                                     id="form2Example31"
                                     checked
                                 />
-                                <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                <label class="form-check-label" style="color:#000000" for="form2Example31"> Remember me </label>
                                 </div>
                             </div>
                         

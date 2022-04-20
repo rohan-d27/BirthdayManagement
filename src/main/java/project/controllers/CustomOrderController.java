@@ -43,29 +43,30 @@ public class CustomOrderController {
 		mv.setViewName("showcustomorder");
 		return mv;
 	}
+
 	@PostMapping("/CustomPackage")
-	public ModelAndView customPackage(@RequestParam int packageId,HttpSession session) {
+	public ModelAndView customPackage(@RequestParam int packageId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		PackagesInfoTable pk=daoPackages.findById(packageId).get();
-		List<ServicesInfoTable> list =daoServices.findAll();
+		PackagesInfoTable pk = daoPackages.findById(packageId).get();
+		List<ServicesInfoTable> list = daoServices.findAll();
 		session.setAttribute("package2", pk);
 		mv.addObject("Services", list);
 		mv.setViewName("ViewCustomOrderDetails");
 		return mv;
 	}
-	
 
 	@PostMapping(path = "/customorderinsert", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String insertCustomOrder(@RequestParam MultiValueMap<String, String> paramMap,
 			@RequestParam OrdersInfoTable order, @RequestParam List<ServicesInfoTable> service) throws Exception {
 		CustomOrderTable customorder = new CustomOrderTable();
-		
+
 		customorder.setOrdersInfoTable(order);
-		for(int i=0;i<service.size();i++)
-		{customorder.setServicesInfoTable(service.get(i));
-		
-		if (customorder.getOrdersInfoTable() != null)
-			daoCustomOrder.insertCustomOrder(customorder);}
+		for (int i = 0; i < service.size(); i++) {
+			customorder.setServicesInfoTable(service.get(i));
+
+			if (customorder.getOrdersInfoTable() != null)
+				daoCustomOrder.insertCustomOrder(customorder);
+		}
 		return "index";
 	}
 

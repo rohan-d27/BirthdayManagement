@@ -42,18 +42,22 @@ public class HomeController {
 	public String About() {
 		return "about";
 	}
+
 	@GetMapping("/cakes")
 	public String Cakes() {
 		return "Cakes";
 	}
+
 	@GetMapping("/musicsystem")
 	public String Musicsystem() {
 		return "musicsystem";
 	}
+
 	@GetMapping("/artist")
 	public String Artist() {
 		return "artist";
 	}
+
 	@GetMapping("/catering")
 	public String Catering() {
 		return "catering";
@@ -63,7 +67,7 @@ public class HomeController {
 	public String Decoration() {
 		return "decoration";
 	}
-	
+
 	@GetMapping("/photovideo")
 	public String Photovideo() {
 		return "photovideo";
