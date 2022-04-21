@@ -3,6 +3,7 @@ package project.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -67,23 +68,29 @@ public class AdminController {
 	}
 
 	@GetMapping("/adminlist")
-	public ModelAndView getListOfAdmins() {
-
+	public ModelAndView getListOfAdmins(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		if (session.getAttribute("Admin") != null) {
+		
 
 		List<AdminInfoTable> list = daoAdmin.findAll();
 
 		mv.addObject("admins", list);
 		mv.setViewName("showadmins");
+		return mv;}
+		mv.setViewName("index");
 		return mv;
 
 	}
 
 	@RequestMapping("/AdminDashboardPackageDetails")
-	public ModelAndView adminDashboard() {
+	public ModelAndView adminDashboard(HttpSession session) {
 		ModelAndView obj = new ModelAndView();
+		if (session.getAttribute("Admin") != null) {
 		obj.addObject("packages", daoPackage.findAll());
 		obj.setViewName("AdminDashboardPackageDetails");
+		return obj;}
+		obj.setViewName("index");
 		return obj;
 	}
 
@@ -126,17 +133,25 @@ public class AdminController {
 	@PostMapping(path = "/AdminUpdate", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String updateAdmin(@RequestBody AdminInfoTable ad, @RequestParam MultiValueMap<String, String> paramMap,
 			@RequestParam String adminEmail, @RequestParam String adminUsername, @RequestParam String adminPassword,
-			@RequestParam String adminFname, @RequestParam String adminLname, @RequestParam String adminMobno)
+			@RequestParam String adminFname, @RequestParam String adminLname, @RequestParam String adminMobno,HttpSession session)
 			throws Exception {
+		if (session.getAttribute("Admin") != null) {
 		int id = ad.getAdminId();
 		daoAdmin.updateAdmin(id, adminFname, adminLname, adminMobno, adminEmail, adminUsername, adminPassword);
-		return "index";
+		return "index";}
+		else
+			return "index";
 	}
 
 	@PostMapping(path = "/admindelete", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
-	public String deleteAdmin(@RequestBody AdminInfoTable ad) throws Exception {
-
-		daoAdmin.delete(ad);
-		return "index";
+	public String deleteAdmin(@RequestBody AdminInfoTable ad,HttpSession session) throws Exception {
+		if (session.getAttribute("Admin") != null) {
+		
+			daoAdmin.delete(ad);
+		
+		return "index";}
+		else return "index";
+		
 	}
 }
+	

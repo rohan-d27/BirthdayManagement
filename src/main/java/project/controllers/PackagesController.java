@@ -2,6 +2,8 @@ package project.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -39,54 +41,68 @@ public class PackagesController {
 	}
 
 	@RequestMapping("/AddNewPackage")
-	public ModelAndView addPackages() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("PackageDetailsInsert");
-		return mv;
+	public String addPackages(HttpSession session) {
+	//	ModelAndView mv = new ModelAndView();
+		if(session.getAttribute("Admin")!=null)
+		{
+			//mv.setViewName("PackageDetailsInsert");
+		return "PackageDetailsInsert";
+		}
+		else
+			return "index";
 	}
 
-	/*
-	 * @RequestMapping("/packages") public ModelAndView
-	 * getListOfPackagesService(@RequestParam int id) { ModelAndView mv = new
-	 * ModelAndView(); List<ServicesInfoTable> list =
-	 * daoPackagesServices.findbyid(id); mv.addObject("services", list);
-	 * mv.setViewName("TESTPAckage"); return mv; }
-	 */
+	
 
 	@PostMapping(path = "/packageinsert", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String insertPackage(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam String packageDesc,
-			@RequestParam String packageName, @RequestParam double packagePrice) throws Exception {
+			@RequestParam String packageName, @RequestParam double packagePrice,HttpSession session) throws Exception {
+		if(session.getAttribute("Admin")!=null)
+		{
 		PackagesInfoTable pk = new PackagesInfoTable();
 		pk.setPackageName(packageName);
 		pk.setPackageDesc(packageDesc);
 		pk.setPackagePrice(packagePrice);
 		if (pk.getPackageName() != null)
 			daoPackages.insertPackage(pk);
-		return "index";
+		return "index";}
+		else
+			return "index";
 	}
 
 	@PostMapping(path = "/packagesupdate", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String updatePackage(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam int packageId,
-			@RequestParam String packageDesc, @RequestParam String packageName, @RequestParam double packagePrice)
+			@RequestParam String packageDesc, @RequestParam String packageName, @RequestParam double packagePrice,HttpSession session)
 			throws Exception {
-
+		if(session.getAttribute("Admin")!=null)
+		{
 		daoPackages.updatePackage(packageId, packageName, packageDesc, packagePrice);
-		return "index";
+		return "index";}
+		else
+			return "index";
 	}
 
 	@PostMapping(path = "/packagesdelete", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
-	public String deletePackage(@RequestBody PackagesInfoTable pk) throws Exception {
-
+	public String deletePackage(@RequestBody PackagesInfoTable pk,HttpSession session) throws Exception {
+		if(session.getAttribute("Admin")!=null)
+		{
 		daoPackages.delete(pk);
-		return "index";
+		return "index";}
+		else
+			return "index";
 	}
 
 	@PostMapping(path = "/packageedit")
-	public ModelAndView editPackage(@RequestParam int id) {
+	public ModelAndView editPackage(@RequestParam int id,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		if(session.getAttribute("Admin")!=null)
+		{
 		PackagesInfoTable p = daoPackages.findById(id).get();
 		mv.addObject("packageData", p);
 		mv.setViewName("PackageDetailsEdit");
-		return mv;
+		return mv;}
+		else 
+			mv.setViewName("index");
+			return mv;
 	}
 }

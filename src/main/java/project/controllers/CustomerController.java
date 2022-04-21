@@ -3,6 +3,7 @@ package project.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -52,9 +53,12 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/CustomerProfile")
-	public ModelAndView customerProfile() {
+	public ModelAndView customerProfile(HttpSession session) {
 		ModelAndView obj = new ModelAndView();
+		if (session.getAttribute("Customer") != null) {
 		obj.setViewName("CustomerProfile");
+		return obj;}
+		obj.setViewName("index");
 		return obj;
 	}
 
@@ -112,12 +116,15 @@ public class CustomerController {
 			@RequestBody CustomerInfoTable cs, @RequestParam String customerFname, @RequestParam String customerLname,
 			@RequestParam String customerMobno, @RequestParam String customerPassword,
 			@RequestParam String customerUsername, @RequestParam String customerEmail,
-			@RequestParam String customerAddress, @RequestParam String customerCity, @RequestParam int customerZipcode)
+			@RequestParam String customerAddress, @RequestParam String customerCity, @RequestParam int customerZipcode,HttpSession session)
 			throws Exception {
+		if (session.getAttribute("Customer") != null) {
 		int id = cs.getCustomerId();
 		daoCustomer.updateCustomer(id, customerFname, customerLname, customerMobno, customerEmail, customerAddress,
 				customerCity, customerZipcode, customerUsername, customerPassword);
-		return "index";
+		return "index";}
+		else
+			return "index";
 	}
 
 	@PostMapping(path = "/customerdelete", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })

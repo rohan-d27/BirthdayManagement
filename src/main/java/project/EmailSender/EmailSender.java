@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailSender {
 
-	// private JavaMailSender mailsender;
+	
 	public JavaMailSender getJavaMailSender() {
 		JavaMailSenderImpl mailsender = new JavaMailSenderImpl();
 		mailsender.setHost("smtp.gmail.com");

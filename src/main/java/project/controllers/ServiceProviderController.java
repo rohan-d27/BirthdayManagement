@@ -40,24 +40,32 @@ public class ServiceProviderController {
 	@RequestMapping("/ServiceProviderDashboard")
 	public ModelAndView serviceDash(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		if (session.getAttribute("Serviceprovider") != null) {
 		ServiceProviderInfoTable serviceprovider = (ServiceProviderInfoTable) session.getAttribute("Serviceprovider");
 		List<ServicesInfoTable> services = daoServices.findbyServiceproviderId(serviceprovider);
 		if (services != null)
 			mv.addObject("Services", services);
 		mv.setViewName("ServiceProviderDashboard");
 
+		return mv;}
+		else
+			mv.setViewName("index");
 		return mv;
 	}
 
 	@RequestMapping("/serviceproviderslist")
-	public ModelAndView getListOfServiceProviders() {
+	public ModelAndView getListOfServiceProviders(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
+		if (session.getAttribute("Admin") != null) {
 		List<ServiceProviderInfoTable> list = daoServiceProvider.findAll();
 
 		mv.addObject("serviceproviders", list);
 		mv.setViewName("showserviceproviders");
+		return mv;}
+		else
+			mv.setViewName("index");
 		return mv;
+		
 	}
 
 	@GetMapping("/ServiceProviderLogin")
@@ -123,11 +131,13 @@ public class ServiceProviderController {
 			@RequestParam String serviceProviderLname, @RequestParam String serviceProviderMobno,
 			@RequestParam String serviceProviderPassword, @RequestParam String serviceProviderUsername,
 			@RequestParam String serviceProviderEmail, @RequestParam String serviceProviderAddress,
-			@RequestParam String serviceProviderCity, @RequestParam int serviceProviderZipcode) throws Exception {
+			@RequestParam String serviceProviderCity, @RequestParam int serviceProviderZipcode,HttpSession session) throws Exception {
+		if (session.getAttribute("Serviceprovider") != null) {
 		int id = sp.getServiceProviderId();
 		daoServiceProvider.updateServiceProvider(id, serviceProviderFname, serviceProviderLname, serviceProviderMobno,
 				serviceProviderEmail, serviceProviderAddress, serviceProviderCity, serviceProviderZipcode,
 				serviceProviderUsername, serviceProviderPassword);
+		return "index";}
 		return "index";
 	}
 

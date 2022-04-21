@@ -37,13 +37,15 @@ public class FeedbackController {
 	}
 
 	@RequestMapping("/feedbacklist")
-	public ModelAndView getListOfFeedbacks() {
+	public ModelAndView getListOfFeedbacks(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
+		if (session.getAttribute("Admin") != null) {
 		List<FeedbackTable> list = daoFeedback.findAll();
 
 		mv.addObject("feedbacks", list);
 		mv.setViewName("showfeedbacks");
+		return mv;}
+		mv.setViewName("index");
 		return mv;
 	}
 
@@ -58,6 +60,7 @@ public class FeedbackController {
 	@PostMapping(path = "/InsertFeedback", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
 	public String insertFeedback(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam int orderid,
 			@RequestParam String feedbackDetails, HttpSession session) throws Exception {
+		if (session.getAttribute("Customer") != null) {
 		CustomerInfoTable cobj = (CustomerInfoTable) session.getAttribute("customer");
 		OrdersInfoTable obj = daoOrders.findById(orderid).get();
 
@@ -67,7 +70,9 @@ public class FeedbackController {
 			fb.setOrderId(orderid);
 			daoFeedback.insertFeedback(fb);
 		}
-		return "index";
+		return "index";}
+		else
+			return "index";
 	}
 
 	@PostMapping(path = "/feedbackdelete", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
@@ -78,13 +83,17 @@ public class FeedbackController {
 	}
 
 	@GetMapping(path = "/feedbackcustomerfeedbacklist", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
-	public ModelAndView getListOfCustomerFeedbacks(HttpServletRequest request) {
+	public ModelAndView getListOfCustomerFeedbacks(HttpServletRequest request,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		if (session.getAttribute("Customer") != null) {
 		CustomerInfoTable c = (CustomerInfoTable) request.getSession().getAttribute("customer");
 		int customerId = c.getCustomerId();
 		List<FeedbackTable> list = daoFeedback.findByCustomerId(customerId);
 		mv.addObject("feedbacks", list);
 		mv.setViewName("showcustomerfeedbacks");
+		return mv;}
+		mv.setViewName("index");
 		return mv;
+		
 	}
 }

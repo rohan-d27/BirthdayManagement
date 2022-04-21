@@ -46,11 +46,15 @@ public class OrdersController {
 	CustomOrderDAO daoCustomOrder;
 
 	@RequestMapping("/orderlist")
-	public ModelAndView getListOfOrders() {
+	public ModelAndView getListOfOrders(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		List<OrdersInfoTable> list = daoOrders.findAll();
-		mv.addObject("orders", list);
-		mv.setViewName("ShowAllOrders");
+		if (session.getAttribute("Admin") != null) {
+			List<OrdersInfoTable> list = daoOrders.findAll();
+			mv.addObject("orders", list);
+			mv.setViewName("ShowAllOrders");
+			return mv;
+		} else
+			mv.setViewName("index");
 		return mv;
 	}
 
@@ -159,22 +163,32 @@ public class OrdersController {
 
 	@GetMapping(path = "/ordercustomerorderlist")
 	public ModelAndView getListOfCustomerOrders(HttpSession session) {
-
-		CustomerInfoTable cs = (CustomerInfoTable) session.getAttribute("Customer");
 		ModelAndView mv = new ModelAndView();
-		List<OrdersInfoTable> list = daoOrders.findbyCustomerId(cs);
-		mv.addObject("orders", list);
-		mv.setViewName("ShowCustomerOrders");
+		if (session.getAttribute("Customer") != null) {
+			CustomerInfoTable cs = (CustomerInfoTable) session.getAttribute("Customer");
+
+			List<OrdersInfoTable> list = daoOrders.findbyCustomerId(cs);
+			mv.addObject("orders", list);
+			mv.setViewName("ShowCustomerOrders");
+			return mv;
+		} else
+			mv.setViewName("index");
 		return mv;
+
 	}
 
 	@GetMapping(path = "/ordersporderlist")
 	public ModelAndView getListOfSpOrders(HttpSession session) {
-		ServiceProviderInfoTable service = (ServiceProviderInfoTable) session.getAttribute("Serviceprovider");
+
 		ModelAndView mv = new ModelAndView();
-		List<OrdersInfoTable> list = daoOrders.findByServiceProvidersId(service.getServiceProviderId());
-		mv.addObject("orders", list);
-		mv.setViewName("ShowSPOrders");
+		if (session.getAttribute("Serviceprovider") != null) {
+			ServiceProviderInfoTable service = (ServiceProviderInfoTable) session.getAttribute("Serviceprovider");
+			List<OrdersInfoTable> list = daoOrders.findByServiceProvidersId(service.getServiceProviderId());
+			mv.addObject("orders", list);
+			mv.setViewName("ShowSPOrders");
+			return mv;
+		} else
+			mv.setViewName("index");
 		return mv;
 	}
 }
