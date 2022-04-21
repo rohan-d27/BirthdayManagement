@@ -34,7 +34,8 @@ import project.entities.ServicesInfoTable;
 @Controller
 @SessionAttributes("order")
 public class OrdersController {
-
+	@Autowired
+	EmailSender email;
 	@Autowired
 	OrdersDAO daoOrders;
 	@Autowired
@@ -86,12 +87,13 @@ public class OrdersController {
 		order.setNumberOfGuests(numberOfGuests);
 		// order.setOrderAmount();
 		order.setOrderStatus("Confirmed");
-		/*
-		 * boolean b= daoOrders.insertOrder(order); CustomerInfoTable customer =
-		 * (CustomerInfoTable) session.getAttribute("Customer"); if(b) { String cmail =
-		 * customer.getCustomerEmail(); EmailSender email = new EmailSender();
-		 * email.orderConfirm(cmail, "Order Confirmed", "Order Confirmed");}
-		 */
+
+		boolean b = daoOrders.insertOrder(order);
+		CustomerInfoTable customer = (CustomerInfoTable) session.getAttribute("Customer");
+		if (b) {
+			String cmail = customer.getCustomerEmail();
+			email.orderConfirm(cmail, "Order Confirmed", "Order Confirmed");
+		}
 
 		return "index";
 	}
@@ -128,13 +130,12 @@ public class OrdersController {
 		order.setOrderAmount(pk.getPackagePrice());
 		order.setOrderStatus("Confirmed");
 		daoOrders.insertOrder(order);
-		// CustomerInfoTable customer = (CustomerInfoTable)
-		// session.getAttribute("Customer");
-		/*
-		 * String cmail = customer.getCustomerEmail(); EmailSender email = new
-		 * EmailSender(); email.orderConfirm(cmail, "Order Confirmed",
-		 * "Order Confirmed");
-		 */
+		CustomerInfoTable customer = (CustomerInfoTable) session.getAttribute("Customer");
+
+		String cmail = customer.getCustomerEmail();
+		EmailSender email = new EmailSender();
+		email.orderConfirm(cmail, "Order Confirmed", "Order Confirmed");
+
 		return "index";
 	}
 
