@@ -24,7 +24,8 @@
         <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
         <style>
             body {
-                background: #ccad00
+                
+                background:#ccad00
             }
 
             .form-control:focus {
@@ -58,7 +59,7 @@
                 cursor: pointer
             }
             label{
-                color: whitesmoke;
+               
                 font-size: medium;
             }
 
@@ -75,12 +76,12 @@
             }
         </style>
     </head>
-    <div id="wrapper">
+    <div id="wrapper" >
         <!-- header begin -->
-        <header>
+        <header >
 
 
-            <div class="container">
+            <div class="container" >
                 <div class="row">
                     <div class="col-md-12">
                         <!-- logo begin -->
@@ -96,11 +97,11 @@
                         <span id=""></span>
                         <!-- small button close -->
                         
-                        <a href="/Contact" class="btn-rsvp">Contact</a>
+                        <a href="/Contact" class="btn-rsvp" >Contact</a>
 
                         <!-- mainmenu begin -->
                         <nav>
-                            <ul id="mainmenu">
+                            <ul id="mainmenu" >
                                 <li><a href="/">Home</a> </li>
 
 
@@ -123,7 +124,7 @@
 
         
         <br><br><br><br><br><br><br>
-    <body oncontextmenu='return false' class='snippet-body'>
+    <body oncontextmenu='return false' class='snippet-body' >
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="col-md-3">
             
@@ -169,7 +170,7 @@
                         
                             <div class="col">
                                 <!-- Simple link -->
-                                <a href="/AdminForget" style="font-size: medium; color: #448dc2;">Forgot password?</a>
+                                <a href="/AdminForgot" style="font-size: medium; color: #448dc2;">Forgot password?</a>
                             </div>
                             </div>
                         

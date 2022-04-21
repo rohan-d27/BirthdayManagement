@@ -124,7 +124,7 @@
             
             <br><br><br><br><br><br><br>
         <body oncontextmenu='return false' class='snippet-body'>
-            <div class="container rounded bg-#ccad00 mt-5 mb-5">
+            <div class="container rounded bg-white mt-5 mb-5">
                 <div class="col-md-3">
                 
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"></div>
@@ -139,7 +139,7 @@
                             <form action="/AdminForgotPassword" method="post">
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="adminEmail">Email address</label>
+                                    <label class="form-label" for="adminEmail" style="color:#000000">Email address</label>
                                 <input type="email" id="adminEmail" class="form-control" name="adminEmail" placeholder="Email Address" />
                                 
                                 </div>
@@ -147,7 +147,7 @@
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <div class="form-outline mb-4">
-                                        <label for="mobileno" class="form-label">Mobile Number</label> 
+                                        <label for="mobileno" class="form-label" style="color:#000000">Mobile Number</label> 
                                         <input type="text "name="adminMobno" id="adminMobno"  pattern="[0-9]+" class="form-control" placeholder="Mobile Number" required>
                                 </div>
                         

@@ -168,7 +168,7 @@
                         
                             <div class="col">
                                 <!-- Simple link -->
-                                <a href="/ServiceProviderForget" style="font-size: medium; color: #448dc2;">Forgot password?</a>
+                                <a href="/ServiceProviderForgot" style="font-size: medium; color: #448dc2;">Forgot password?</a>
                             </div>
                             </div>
                         
