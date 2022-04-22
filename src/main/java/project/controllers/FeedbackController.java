@@ -61,18 +61,18 @@ public class FeedbackController {
 	public String insertFeedback(@RequestParam MultiValueMap<String, String> paramMap, @RequestParam int orderid,
 			@RequestParam String feedbackDetails, HttpSession session) throws Exception {
 		if (session.getAttribute("Customer") != null) {
-		CustomerInfoTable cobj = (CustomerInfoTable) session.getAttribute("customer");
+		CustomerInfoTable cobj = (CustomerInfoTable) session.getAttribute("Customer");
 		OrdersInfoTable obj = daoOrders.findById(orderid).get();
-
-		if (obj != null && obj.getCustomerInfoTable().getCustomerId() == cobj.getCustomerId()) {
-			FeedbackTable fb = new FeedbackTable();
+		if(obj!=null && obj.getCustomerInfoTable().getCustomerId()==cobj.getCustomerId()) {	
+		FeedbackTable fb = new FeedbackTable();
 			fb.setFeedbackDetails(feedbackDetails);
 			fb.setOrderId(orderid);
-			daoFeedback.insertFeedback(fb);
-		}
+			daoFeedback.insertFeedback(fb);}
+		
 		return "index";}
-		else
-			return "index";
+		else return "index";
+		
+		
 	}
 
 	@PostMapping(path = "/feedbackdelete", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })

@@ -207,7 +207,7 @@
                         </div>
                      
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                                type="button">Submit</button></div>
+                                type="submit">Submit</button></div>
                     </div>
                 
                </form></div>
