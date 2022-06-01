@@ -1,4 +1,5 @@
-# BirthdayManagement (see master branch for source code)
+# Birthday Party Organizer
+Source Code on Master Branch 
 
 # Description:
 Birthday Party Organizer is a web application for planning, organizing and managing birthday party events. 
