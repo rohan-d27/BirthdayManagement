@@ -21,11 +21,11 @@ Database: MySQL
 
 
 # Features:
-• This Web app supports multiple users such as Customer,Service Provider, Admin.
+• This Web app supports multiple users such as Customer, Service Provider, Admin.
 
 • Multilayer architecture.
 
-• Email alerts for confirm/cancel order,feedback, forget password.
+• Email alerts for confirm/cancel order, feedback, forget password.
 
 • Customer
 1.	Customer can register and update their profile details.
