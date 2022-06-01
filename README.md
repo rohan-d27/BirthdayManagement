@@ -20,7 +20,9 @@ Database: MySQL
 
 # Features:
 • This Web app supports multiple users such as Customer,Service Provider, Admin.
+
 • Multilayer architecture.
+
 • Email alerts for confirm/cancel order,feedback, forget password.
 
 • Customer
