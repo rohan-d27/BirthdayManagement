@@ -2,9 +2,7 @@
 Source Code on Master Branch 
 
 # Description:
-Birthday Party Organizer is a web application for planning, organizing and managing birthday party events. 
-The objective of this web application is to make birthday planning and organizing easier and provide all required services at one platform.
-We have used JSP, HTML, CSS on client side and Spring MVC on server side and MYSQL for database management.
+Birthday Party Organizer is a web application for planning, organizing and managing birthday party events. The objective of this web application is to make birthday planning and organizing easier and provide all required services at one platform. The accessibility of the system should facilitate communication between customers, service-providers and admins. It will allow customer to request events be made. It should then allow site managers to create an event that includes the venue, package, time, cost, and services. The core of the system will reside on a server connected to the internet and the primary interface for the system will be via an internet browser.
 
 # Technologies Used:
 Frontend: HTML, CSS, JavaScript, JSP 
