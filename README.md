@@ -6,8 +6,10 @@ The objective of this web application is to make birthday planning and organizin
 We have used JSP, HTML, CSS on client side and Spring MVC on server side and MYSQL for database management.
 
 # Technologies Used:
-Frontend: HTML, CSS, JavaScript, JSP
-Backend: SpringBoot MVC
+Frontend: HTML, CSS, JavaScript, JSP 
+
+Backend: SpringBoot MVC 
+
 Database: MySQL
 
 # Modules 
