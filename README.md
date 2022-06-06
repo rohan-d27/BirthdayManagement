@@ -24,6 +24,8 @@ Database: MySQL
 
 • Multilayer architecture.
 
+• MVC pattern architecture.
+
 • Email alerts for confirm/cancel order, feedback, forget password.
 
 • Customer
